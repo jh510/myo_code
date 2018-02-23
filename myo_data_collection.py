@@ -216,7 +216,7 @@ if __name__ == '__main__':
         print("Shutting Down Hub...")
         print(1/(args.timedelay/listener.samples))
         hub.shutdown()  # !! crucial
-    while hub.running
+    while hub.running:
         time.sleep(0.25)
     time.sleep(2)
     args.f_emg.close()
