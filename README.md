@@ -2,7 +2,12 @@
 
 event_logger.py
 
-Usage:  python event_logger.py -f (file_name.txt)
+usage: event_logger.py [-h] [-f OUTPUT]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -f OUTPUT, --output OUTPUT
+                        Output file path if outputting to file
 
 Pressing enter in the command prompt logs an event without any tags, while typing a tag first and then pressing enter logs an event with the tag.
 
