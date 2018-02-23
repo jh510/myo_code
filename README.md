@@ -29,13 +29,18 @@ usage: myo_data_collection.py [-h] [-d DESCRIPTION]
 
 optional arguments:
   -h, --help            show this help message and exit
+  
   -d DESCRIPTION, --description DESCRIPTION
                         The description of the reconding session
+  
   -s [{stdout,file,local,dev,prod} [{stdout,file,local,dev,prod} ...]], --store [{stdout,file,local,dev,prod} [{stdout,file,local,dev,prod} ...]]
                         Where should results be stored?
+  
   -e F_EMG              EMG Output file path if outputting to a file via
                         --store file
+  
   -i F_IMU              IMU Output file path if outputting to a file via
                         --store file
+  
   -t TIMEDELAY, --timedelay TIMEDELAY
                         Time to run the data collection for
