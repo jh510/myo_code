@@ -122,15 +122,15 @@ class Listener(libmyo.DeviceListener):
                 
     def on_emg_data(self, myo, timestamp, emg):
         UTC = datetime.fromtimestamp(int(timestamp/1000000)).strftime('%Y-%m-%d %H:%M:%S')
-        uSec = timestamp%10000000
+        uSec = timestamp%1000000
         self.myo_states[myo.value].motiondata.emg = emg
-        self.myo_states[myo.value].motiondata.time = str(UTC) + ' '  + str(uSec)
+        self.myo_states[myo.value].motiondata.time = str(UTC) + ' '  + '%0*d' % (6, uSec)
         self.emg_output(myo)
         self.samples = self.samples + 1
         
     def on_orientation_data(self, myo, timestamp, orientation):
         UTC = datetime.fromtimestamp(int(timestamp/1000000)).strftime('%Y-%m-%d %H:%M:%S')
-        uSec = timestamp%10000000
+        uSec = timestamp%1000000
         self.myo_states[myo.value].motiondata.orientation = {
                 'w': orientation.w,
                 'x': orientation.x,
@@ -140,18 +140,18 @@ class Listener(libmyo.DeviceListener):
         self.myo_states[myo.value].motiondata.roll = orientation.roll
         self.myo_states[myo.value].motiondata.pitch = orientation.pitch
         self.myo_states[myo.value].motiondata.yaw = orientation.yaw
-        self.myo_states[myo.value].motiondata.time = str(UTC) + ' '  + str(uSec)
+        self.myo_states[myo.value].motiondata.time = str(UTC) + ' '  + '%0*d' % (6, uSec)
         self.imu_output(myo)
         
     def on_accelerometor_data(self, myo, timestamp, acceleration):
         UTC = datetime.fromtimestamp(int(timestamp/1000000)).strftime('%Y-%m-%d %H:%M:%S')
-        uSec = timestamp%10000000
+        uSec = timestamp%1000000
         self.myo_states[myo.value].motiondata.acceleration = {
                 'x': acceleration.x,
                 'y': acceleration.y,
                 'z': acceleration.z,
             }
-        self.myo_states[myo.value].motiondata.time = str(UTC) + ' '  + str(uSec)
+        self.myo_states[myo.value].motiondata.time = str(UTC) + ' '  + '%0*d' % (6, uSec)
 
 
     def on_gyroscope_data(self, myo, timestamp, gyroscope):
